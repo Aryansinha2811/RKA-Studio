@@ -1,75 +1,112 @@
-# React + TypeScript + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# RKA Studio
 
-Currently, two official plugins are available:
+### A cinematic, single-page portfolio for a creative branding agency.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Built with React, TypeScript, and Tailwind CSS — no animation library, no bloat.
+Every interaction on this site, including the custom cursor, is hand-rolled vanilla JS.
 
-## React Compiler
+[![React](https://img.shields.io/badge/React-19-149ECA?style=flat-square&logo=react&logoColor=white)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+</div>
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## About
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+RKA Studio is a single-page site built for a branding & creative agency —
+five sections (Hero, Work, Services, About, Contact), a custom animated
+cursor, and editorial-style motion throughout. It's designed to feel
+cinematic without leaning on GSAP or any other animation dependency:
+every transition here is plain CSS keyframes, `IntersectionObserver`, and
+a `requestAnimationFrame` loop or two.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- 🎯 **Custom cursor** — a small dot that smoothly trails the pointer and
+  inverts colour (`mix-blend-mode: difference`) over buttons and links, so
+  text underneath always stays legible
+- 🖼️ **Work grid** — project cards with a hover-reveal arrow badge that
+  links out to each live project
+- 📰 **News-ticker marquee** — an infinite right-to-left scroll, reused for
+  both the oversized background heading and the client-name strip in About
+- 🎬 **Cursor-following image preview** — hovering a service in the list
+  pops a photo preview that trails the pointer, swapping per row
+- 📈 **Scroll-reveal animations** — sections fade/slide in the first time
+  they enter the viewport, no library required
+- 📱 **Fully responsive** — custom cursor and hover effects gracefully
+  disable on touch devices via `(hover: hover) and (pointer: fine)`
+- ✉️ **EmailJS-ready contact form** *(in progress)*
 
+## Tech Stack
+
+| | |
+|---|---|
+| **Framework** | React 19 + TypeScript |
+| **Build tool** | Vite |
+| **Styling** | Tailwind CSS v4 (CSS-first `@theme` config, no config file) |
+| **Animation** | Native CSS keyframes + `requestAnimationFrame` — zero animation libraries |
+| **Forms** | EmailJS |
+| **Fonts** | Archivo (display), Inter (body), Instrument Serif (italic accent) |
+
+
+## Getting Started
+
+**Prerequisites:** Node.js 18+
+
+```bash
+# Clone the repo
+git clone https://github.com/<your-username>/rka-studio.git
+cd rka-studio
+
+# Install dependencies
+npm install
+
+# Add your images (see Assets below), then run the dev server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open [http://localhost:5173](http://localhost:5173) to view it.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Build for production
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run build   # outputs to dist/
+npm run preview # preview the production build locally
 ```
+
+## Assets
+
+This repo ships without real photography. Drop your images into the paths
+listed in [Project Structure](#project-structure) above, matching the
+filenames — or edit the `import` statements at the top of `Work.tsx`,
+`Services.tsx`, and `About.tsx` to match whatever you name them.
+
+## Design Tokens
+
+Colours, fonts, and the fade-up animation are all defined once in
+`src/index.css` under `@theme`, Tailwind v4's CSS-first config. No
+`tailwind.config.js` needed — change a value there and it updates
+everywhere it's used.
+
+| Token | Value | Used for |
+|---|---|---|
+| `--color-ink` | `#0a0a0b` | Page background |
+| `--color-paper` | `#f5f4f2` | Primary text |
+| `--color-signal` | `#ff5a1f` | Orange accent — labels, CTAs, cursor |
+
+## License
+
+This project was built as a freelance commission for RKA Studio. All
+brand assets, copy, and photography are property of the client. The
+code structure itself is free to reference for your own projects.
+
+---
+
+<div align="center">
+<sub>Built with care — no bloat, no unnecessary dependencies.</sub>
+</div>
