@@ -2,15 +2,15 @@ import { useEffect, useRef, useState } from "react";
 
 // Drop your real photos into src/assets/services/ using these exact
 // names (or edit the paths below to match whatever you named them).
-import brandIdentityImg from "../assets/services/brand-identity.jpg";
-import packagingDesignImg from "../assets/services/packaging-design.jpg";
-import graphicDesignImg from "../assets/services/graphic-design.jpg";
-import socialMediaDesignImg from "../assets/services/social-media-design.jpg";
+import brandIdentityImg from "../assets/services/brand-identity.webp";
+import packagingDesignImg from "../assets/services/packaging-design.webp";
+import graphicDesignImg from "../assets/services/graphic-design.webp";
+import socialMediaDesignImg from "../assets/services/social-media-design.webp";
 import productPhotographyImg from "../assets/services/product-photography.jpg";
 import cinematicReelsImg from "../assets/services/cinematic-reels.jpg";
 import videoEditingImg from "../assets/services/video-editing.jpg";
-import motionGraphicsImg from "../assets/services/motion-graphics.jpg";
-import websiteDesignImg from "../assets/services/website-design.jpg";
+import motionGraphicsImg from "../assets/services/motion-graphics.webp";
+import websiteDesignImg from "../assets/services/website-design.webp";
 
 type Service = {
     name: string;

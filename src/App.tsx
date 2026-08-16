@@ -4,6 +4,8 @@ import Hero from "./components/Hero";
 import Work from "./components/Work";
 import Services from "./components/Services";
 import About from "./components/About";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -15,8 +17,9 @@ function App() {
         <Work />
         <Services />
         <About />
-        {/* Services, About, Contact sections come next */}
+        <Contact />
       </main>
+      <Footer />
     </>
   );
 }
