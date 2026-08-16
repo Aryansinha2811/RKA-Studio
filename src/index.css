@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap");
+@import "tailwindcss";
+
+/* ---------------------------------------------------
+   Design tokens — RKA Studio
+   Dark, editorial agency site. Orange is used sparingly
+   as a signal color (labels, accents, cursor), never as
+   a background flood.
+--------------------------------------------------- */
+@theme {
+  --font-display: "Archivo", "Inter", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-accent: "Instrument Serif", serif;
+
+  --color-ink: #0a0a0b;
+  /* page background */
+  --color-ink-soft: #131315;
+  /* raised surfaces / cards */
+  --color-ink-line: #232326;
+  /* hairline borders */
+  --color-paper: #f5f4f2;
+  /* primary text on dark */
+  --color-paper-dim: #9a9a9f;
+  /* secondary / muted text */
+  --color-signal: #ff5a1f;
+  /* orange accent */
+  --color-signal-soft: #ff5a1f1a;
+
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide the native cursor on devices with a mouse only —
+   touch devices keep the system cursor. The CustomCursor
+   component (built separately) renders the replacement. */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a,
+  button {
+    cursor: none;
+  }
+}
+
+::selection {
+  background: var(--color-signal);
+  color: var(--color-ink);
+}
+
+/* ---------------------------------------------------
+   Custom cursor
+   Base = small white dot. Grows into a solid orange
+   circle when hovering anything tagged data-cursor="hover".
+   Position is driven by CustomCursor.tsx via transform
+   (rAF loop), so only size/color transition here.
+--------------------------------------------------- */
+.cursor-dot {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: var(--color-paper);
+  pointer-events: none;
+  z-index: 100;
+  transition:
+    width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cursor-dot {
+    display: block;
+  }
+}
+
+.cursor-dot--hover {
+  width: 56px;
+  height: 56px;
+  /* Inverts whatever it overlaps instead of painting a solid blob —
+     this is what keeps button/link text readable underneath it. */
+  mix-blend-mode: difference;
+}
+
+/* ---------------------------------------------------
+   Marquee ticker (Work section background heading)
+   Two identical copies sit side by side; animating the
+   track by exactly -50% loops seamlessly forever.
+--------------------------------------------------- */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 34s linear infinite;
+}
+
+.ghost-text {
+  -webkit-text-stroke: 1px var(--color-ink-line);
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------
+   Services hover-preview image
+   Re-triggers every time the active row changes (the
+   img is remounted via a `key` prop in Services.tsx).
+--------------------------------------------------- */
+.service-preview-image {
+  animation: preview-pop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes preview-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
