@@ -62,7 +62,7 @@ const SERVICES: Service[] = [
     {
         name: "UI UX Design",
         description: "Editorial, interactive, art-directed websites.",
-        image: websiteDesignImg,
+        image: videoEditingImg,
     },
 ];
 
