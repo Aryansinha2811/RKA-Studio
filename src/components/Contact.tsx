@@ -116,7 +116,7 @@ export default function Contact() {
                                         STUDIO
                                     </dt>
                                     <dd className="mt-1 font-display text-lg font-semibold text-paper">
-                                        Mumbai · India
+                                        Delhi · India
                                     </dd>
                                 </div>
                                 <div>
@@ -369,7 +369,7 @@ export default function Contact() {
                                 >
                                     hello@rkastudio.co
                                 </a>
-                                <p className="text-sm text-paper-dim">Mumbai · Worldwide</p>
+                                <p className="text-sm text-paper-dim">Delhi · Worldwide</p>
                             </div>
                         </div>
                     </div>
@@ -400,9 +400,6 @@ export default function Contact() {
                             </a>
                             <a href="#" data-cursor="hover" className="transition-colors hover:text-paper">
                                 Terms
-                            </a>
-                            <a href="#" data-cursor="hover" className="transition-colors hover:text-paper">
-                                Colophon
                             </a>
                         </div>
                     </div>

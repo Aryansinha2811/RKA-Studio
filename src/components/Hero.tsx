@@ -30,7 +30,7 @@ export default function Hero() {
                 style={{ animationDelay: "0.5s" }}
             >
                 <p className="font-body text-[11px] tracking-[0.2em] text-paper-dim">BASED IN</p>
-                <p className="mt-1 text-sm text-paper">Mumbai · Worldwide</p>
+                <p className="mt-1 text-sm text-paper">Delhi · Worldwide</p>
             </div>
 
             <div className="relative mx-auto w-full max-w-7xl">
@@ -41,7 +41,7 @@ export default function Hero() {
                 >
                     <span className="h-px w-8 bg-signal" aria-hidden="true" />
                     <span className="font-body text-xs font-semibold tracking-[0.2em] text-signal">
-                        RKA STUDIO — EST. 2020
+                        RKA STUDIO — EST. 2024
                     </span>
                 </div>
 

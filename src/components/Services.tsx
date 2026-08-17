@@ -40,9 +40,9 @@ const SERVICES: Service[] = [
         image: socialMediaDesignImg,
     },
     {
-        name: "Product Photography",
+        name: "Website Design",
         description: "Studio and lifestyle imagery for premium brands.",
-        image: productPhotographyImg,
+        image: websiteDesignImg,
     },
     {
         name: "Cinematic Reels",
@@ -50,17 +50,17 @@ const SERVICES: Service[] = [
         image: cinematicReelsImg,
     },
     {
-        name: "Video Editing",
+        name: "Product Photography",
         description: "Narrative cuts, sound design, colour finishing.",
-        image: videoEditingImg,
+        image: productPhotographyImg,
     },
     {
-        name: "Motion Graphics",
+        name: "Motion Graphics | Video Editing",
         description: "Type in motion, brand animation, UI motion.",
         image: motionGraphicsImg,
     },
     {
-        name: "Website Design",
+        name: "UI UX Design",
         description: "Editorial, interactive, art-directed websites.",
         image: websiteDesignImg,
     },
